@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		{% load static %}
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<title>啥是二维码？</title>
+		<link rel="icon" href="{% static 'img/logo.ico' %}" type="img/x-ico" />
+
+		<!-- Google font -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
+
+		<!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+
+		<!-- Font Awesome Icon -->
+		<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+		<!-- Custom stlylesheet -->
+		<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    </head>
+	<body>
+
+		<!-- Header -->
+		<header id="header" class="transparent-nav">
+			<div class="container">
+
+				<div class="navbar-header">
+					<!-- Logo -->
+					<div class="navbar-brand">
+						<a class="logo" href="{% url 'index' %}">
+							<img src="{% static 'img/logo-alt.png' %}" alt="logo" title="二维码生成器">
+						</a>
+					</div>
+					<!-- /Logo -->
+
+					<!-- Mobile toggle -->
+					<button class="navbar-toggle">
+						<span></span>
+					</button>
+					<!-- /Mobile toggle -->
+				</div>
+
+				<!-- Navigation -->
+				<nav id="nav">
+					<ul class="main-menu nav navbar-nav navbar-right">
+						<li><a href="{% url 'index' %}">主页</a></li>
+						<li><a href="{% url 'intro' %}">二维码介绍</a></li>
+						<li><a href="{% url 'about' %}">关于我们</a></li>
+					</ul>
+				</nav>
+				<!-- /Navigation -->
+
+			</div>
+		</header>
+		<!-- /Header -->
+
+
+		<!-- Hero-area -->
+		<div class="hero-area section">
+
+			<!-- Backgound Image -->
+			<div class="bg-image bg-parallax overlay" style="background-image:url({% static 'img/blog-post-background.jpg' %})"></div>
+			<!-- /Backgound Image -->
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 text-center">
+						<ul class="hero-area-tree">
+							<li><a href="{% url 'index' %}">主页</a></li>
+							<li>二维码介绍</li>
+							<li><a href="{% url 'about' %}">关于我们</a></li>		
+						</ul>
+						<h1 class="white-text">啥是二维码？</h1>
+						<ul class="blog-post-meta">
+							<li class="blog-meta-author">By : <a href="#">DataXujing</a></li>
+							<li>2019-01-23</li>
+							<li class="blog-meta-comments"><a href="#"><i class="fa fa-comments"></i> </a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- /Hero-area -->
+
+		<!-- Blog -->
+		<div id="blog" class="section">
+
+			<!-- container -->
+			<div class="container">
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- main blog -->
+					<div id="main" class="col-md-9">
+
+						<!-- blog post -->
+						<div class="blog-post">
+							<h3>1 二维码</h3>
+
+							二维码（2-dimensional bar code），是用某种特定的几何图形按一定规律在平面（二维方向上）分布的黑白相间的图形记录数据符号信息的。它能将数字、英文字母、汉字、日文字母、特殊符号(如空格，%，/ 等)、二进制等信息记录到一个正方形的图片中。
+							<br>
+							<br>
+
+							因此，在转换的过程中，离不开编码压缩方式。在许多种类的二维条码中，常用的码制有：Data Matrix, Maxi Code, Aztec, QR Code, Vericode, PDF417, Ultracode, Code 49, Code 16K等。
+							<br>
+							<br>
+
+							二维码在现实生活中的应用越来与普遍，归于功于 QR code 码制的流行。我们常说的二维码就是它。所以，二维码又被称为 QR code。
+							<br>
+							<br>
+
+							QR code 是一种矩阵式二维条码（又称棋盘式二维条码）。它是在一个矩形空间通过黑、白像素在矩阵中的不同分布进行编码。在矩阵相应元素位置上，用点（方点、圆点或其他形状）的出现表示二进制“1”，点的不出现表示二进制的“0”，点的排列组合确定了矩阵式二维条码所代表的意义。
+							<br>
+							<br>
+
+
+							<h3>2 二维码结构</h3>
+
+							我们的目的是要使用 Python 生成 QR 码，那我们需要先了解二维码(QR 码)的结构。根据标准（ISO/IEC 18004），我们可以了解到 QR 码结构如下：
+							<br>
+							<br>
+
+							<img src="{% static 'img/qr.jpg' %}">
+
+							<h4>1) 功能图形</h4>
+							功能图形是不参与编码数据的区域。它包含空白区、位置探测图形、位置探测图形分隔符、定位图形、校正图形五大模块。
+							<br>
+							<br>
+
+							<li>空白区</li>
+							空白区顾名思义就是要留空白。因此，这里不能有任何图样或标记。这样才能保证 QR 能被识别。
+							<br>
+							<br>
+
+
+							<li>位置探测图形</li>
+							这个有点类似中文的“回”字。在 QR 码中有个这样的标识，它分别的左上、右上和左下角。作用是协助扫描软件定位 QR 码并转换坐标系。我们在扫描二维码的时候，不管是竖着扫、横着扫、斜着扫都能识别出内容，主要是它的功劳。
+							<br>
+							<br>
+
+
+							<li>位置探测图形分隔符</li>
+							主要作用是区分功能图形和编码区域。
+							<br>
+							<br>
+							
+							<li>定位图形</li>
+							它由黑白间隔的各自各自组成的线条。主要用于指示标识密度和确定坐标系。原因是 QR 码一种有 40 个版本，也就是说有 40 种尺寸。每种二维码的尺寸越大，扫描的距离就越远。
+							<br>
+							<br>
+							
+							<li>校正图形</li>
+							只有 Version 2 及以上的QR码有校正标识。校正标识用于进一步校正坐标系。
+							<br>
+							<br>
+							
+							<h4>2) 编码区域</h4>
+							编码区域是数据进行编码存储的区域。它由格式信息、版本信息、数据和纠错码字三部分构成。
+							<br>
+							<br>
+
+							<li>格式信息</li>
+							所有尺寸的二维码都有该信息。它存放一些格式化数据的信息，例如容错级别、数据掩码，和额外的自身 BCH 容错码。
+							<br>
+							<br>
+							
+							<li>版本信息</li>
+							版本信息是规定二维码的规格。前面讲到 QR 码一共有 40 种规格的矩阵（一般为黑白色），从21x21（版本1），到177x177（版本40），每一版本符号比前一版本 每边增加4个模块。
+							<br>
+							<br>
+							
+							<li>数据和纠错码</li>
+							主要是存储实际数据以及用于纠错码字。
+							<br>
+							<br>
+							
+							<h3>3 二维码的绘制过程</h3>
+
+							二维码已经是有一套国际标准，绘制二维码过程的严格按照标准来执行。这个过程是比较复杂，我自己也是看了大概，然后总结出大致绘制过程。如果你想深入了解绘制细节，可以阅读标准。
+							<br>
+							<br>
+							
+							二维码的绘制大概过程如下：
+							<br>
+							1）在二维码的左上角、左下角、右上角绘制位置探测图形。位置探测图形一定是一个 7x7 的矩阵。
+							<br>
+
+							2）绘制校正图形。校正图形一定是一个 5x5 的矩阵。
+							<br>
+
+							3）绘制两条连接三个位置探测图形的定位图形。
+							<br>
+
+							4）在上述图片的基础上，继续绘制格式信息。
+							<br>
+
+							5）接着绘制版本信息。
+							<br>
+
+							6）填充数据码和纠错码到二维码图中。
+							<br>
+							
+							7）最后是绘制蒙版图案。因为按照上述方式填充内容，可能会出现大面积的空白或黑块的情况，导致扫描识别会十分困难。所以需要对整个图像与蒙版进行蒙版操作(Masking)，蒙版操作即为异或 XOR 操作。在这一步，我们可以将数据排列成各种图片。
+						</div>
+						<!-- /blog post -->
+
+					</div>
+					<!-- /main blog -->
+
+
+
+				</div>
+				<!-- row -->
+
+			</div>
+			<!-- container -->
+
+		</div>
+		<!-- /Blog -->
+
+		<hr>
+		<!-- Footer -->
+		<footer id="footer" class="section">
+
+			<!-- container -->
+			<div class="container">
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- footer logo -->
+					<div class="col-md-6">
+						<div class="footer-logo">
+							<a class="logo" href="{% url 'index' %}">
+								<img src="{% static 'img/logo.png' %}" alt="logo">
+							</a>
+						</div>
+					</div>
+					<!-- footer logo -->
+
+					<!-- footer nav -->
+					<div class="col-md-6">
+						<ul class="footer-nav">
+							<li><a href="{% url 'index' %}">主页</a></li>
+							<li><a href="{% url 'intro' %}">二维码介绍</a></li>
+							<li><a href="{% url 'about' %}">关于我们</a></li>
+						</ul>
+					</div>
+					<!-- /footer nav -->
+
+				</div>
+				<!-- /row -->
+
+				<!-- row -->
+				<div id="bottom-footer" class="row">
+
+					<!-- social -->
+					<div class="col-md-4 col-md-push-8">
+						<ul class="footer-social">
+							<li><a href="#" class="facebook"><i class="fa fa-wechat"></i></a></li>
+							<li><a href="#" class="twitter"><i class="fa fa-qq"></i></a></li>
+							<li><a href="#" class="google-plus"><i class="fa fa-github"></i></a></li>
+							<li><a href="#" class="instagram"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#" class="youtube"><i class="fa fa-twitter"></i></a></li>
+							<!-- <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li> -->
+						</ul>
+					</div>
+					<!-- /social -->
+
+					<!-- copyright -->
+					<div class="col-md-8 col-md-pull-4">
+						<div class="footer-copyright">
+							<span>&copy; Copyright 2019. 徐静 . <a href="https://dataxujing.github.io" target="_blank" title="home">主页</a> - <a href="https://www.github.com/DataXujing" title="github" target="_blank">项目地址</a></span>
+						</div>
+					</div>
+					<!-- /copyright -->
+
+				</div>
+				<!-- row -->
+
+			</div>
+			<!-- /container -->
+
+		</footer>
+		<!-- /Footer -->
+
+		<!-- preloader -->
+		<div id='preloader'><div class='preloader'></div></div>
+		<!-- /preloader -->
+
+
+		<!-- jQuery Plugins -->
+		<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+	</body>
+</html>

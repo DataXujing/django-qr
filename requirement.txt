@@ -1,0 +1,6 @@
+django
+qrcode
+pillow
+myqr
+uuid
+imageio
